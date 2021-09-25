@@ -1,3 +1,4 @@
+import time
 from player import HumanPlayer, RandomComputerPlayer
 
 
@@ -95,8 +96,11 @@ def play(game, x_player, o_player, print_game=True):  # outside the game class!!
             #     letter='O'
             # else:
             #     letter='X'
-        if print_game:
-            print("It's a tie!")
+
+        time.sleep(1)
+
+    if print_game:
+        print("It's a tie!")
 
 
 if __name__ == '__main__':
