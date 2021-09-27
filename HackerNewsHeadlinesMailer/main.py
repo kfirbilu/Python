@@ -27,7 +27,7 @@ content += cnt
 content += ('<br>------<br>')
 content += ('<br><br>End of message')
 
-######## send the mail ########
+######### send the mail ########
 
 print('Composing Email....')
 
