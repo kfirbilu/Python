@@ -46,7 +46,7 @@ msg.attach(MIMEText(content,'html'))
 
 
 
-######## Mail server #########
+######### Mail server #########
 
 print('Initiating Server...')
 
