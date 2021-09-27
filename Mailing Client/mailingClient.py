@@ -19,7 +19,7 @@ with open("password.txt", 'r') as f:  # reading the password from an external fi
     PASS = f.read()
 
 server = smtplib.SMTP(SERVER, PORT)  # opening a server
-server.set_debuglevel(0)  # showing debug comments so we can debug if there are any errors (0 for not showing)
+server.set_debuglevel(0)  # showing debug comments so we can debug if there are any errors (0 for not showing, 1 for showing)
 server.ehlo()
 server.starttls()
 server.login(FROM, PASS)
