@@ -34,8 +34,8 @@ print('Composing Email....')
 SERVER = 'smtp.gmail.com'  # our SMTP server
 PORT = 587  # our port number
 FROM = 'doarzevel12345678@gmail.com'  # our from-email ID
-PASS = 'm1826424'  # FROM email id's password
-TO = 'kfirbilu@gmail.com'  # our email ids to send to
+PASS = '*********'  # FROM email id's password
+TO = 'doarzevel12345678@gmail.com'  # our email ids to send to
 
 msg = MIMEMultipart()
 
