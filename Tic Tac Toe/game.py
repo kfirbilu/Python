@@ -65,7 +65,7 @@ class TicTacToe:
             if all([spot == letter for spot in diagonal2]):
                 return True
 
-        # all checks faild - no winner
+        # all checks failed - no winner
         return False
 
 
