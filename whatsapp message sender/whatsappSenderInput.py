@@ -9,10 +9,12 @@ df = pd.read_excel(excelPath)
 
 numbers = list(df['numbers'])
 
+areaCode = input("Please enter your local area code: ")
+
 message = input("Please enter your message: ")
 
 for num in numbers:
-    newNum = '+972' + str(num)
+    newNum = areaCode + str(num)
     print("sendeing message to " + newNum)
     pywhatkit.sendwhatmsg_instantly(newNum,message, 4, True, 4)
 
