@@ -11,6 +11,7 @@ for num in numbers:
     newNum = '+972' + str(num)
     print(newNum)
     pywhatkit.sendwhatmsg_instantly(newNum, 'ENTER YOUR MESSAGE HERE!!',4, True, 4)
+    pywhatkit.close_tab()
 
 
 
