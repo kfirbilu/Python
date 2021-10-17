@@ -1,24 +1,24 @@
-
-
 import pywhatkit
 import pandas as pd
 
-excelPath = input("Please enter a specific path the excel file containing the numbers: ")
 
-df = pd.read_excel(excelPath)
+def main():
+    excelPath = input("Please enter a specific path the excel file containing the numbers: ")
 
-numbers = list(df['numbers'])
+    df = pd.read_excel(excelPath)
 
-areaCode = input("Please enter your local area code: ")
+    numbers = list(df['numbers'])
 
-message = input("Please enter your message: ")
+    areaCode = input("Please enter your local area code: ")
 
-for num in numbers:
-    newNum = areaCode + str(num)
-    print("sendeing message to " + newNum)
-    pywhatkit.sendwhatmsg_instantly(newNum,message, 4, True, 4)
+    message = input("Please enter your message: ")
 
-print("DONE")
+    for num in numbers:
+        newNum = areaCode + str(num)
+        print("sendeing message to " + newNum)
+        pywhatkit.sendwhatmsg_instantly(newNum, message, 4, True, 4)
 
+    print("DONE")
 
-
+if __name__ == '__main__':
+    main()
