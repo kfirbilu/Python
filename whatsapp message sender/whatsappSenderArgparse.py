@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import pywhatkit
 import pandas as pd
 import argparse
