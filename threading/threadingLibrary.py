@@ -17,8 +17,8 @@ def do_something(seconds):
 
 for _ in range(10):
     t = threading.Thread(target=do_something, args=[1.5])
-    t.start()
     threads.append(t)
+    t.start()
 
 for t in threads:
     t.join()

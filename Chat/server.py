@@ -5,7 +5,7 @@ host = '127.0.0.1' # local host (ip of the server)
 port = 55555
 
 server = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-server.bind((host,port)) #bining the server to the host and port
+server.bind((host,port)) #bining the server socket to the host and port
 server.listen() # server starts listening for new connections
 
 clients = []
@@ -15,22 +15,8 @@ def broadcast(message):  # broadcasts a message to all clients
     for client in clients:
         client.send(message)
 
-def handle(client):
-    while True:
-        try:
-            message = client.recv(1024)
-            broadcast(message)
-        except:
-            index = clients.index(client)
-            clients.remove(client)
-            client.close()
-            nickname = nicknames[index]
-            broadcast(f"{nickname} left the chat!".encode('ascii'))
-            nicknames.remove(nickname)
-            break
 
-
-def recieve():
+def recieve():  # receives connection from a client
     while True:
         client, address = server.accept()
         print(f"Connected with {str(address)}")
@@ -46,6 +32,22 @@ def recieve():
         thread = threading.Thread(target=handle,args=(client,))
         thread.start()
 
+
+
+
+def handle(client):
+    while True:
+        try:
+            message = client.recv(1024)
+            broadcast(message)
+        except:
+            index = clients.index(client)
+            clients.remove(client)
+            client.close()
+            nickname = nicknames[index]
+            broadcast(f"{nickname} left the chat!".encode('ascii'))
+            nicknames.remove(nickname)
+            break
 print("Server is listening...")
 recieve()
 
