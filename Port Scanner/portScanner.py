@@ -14,8 +14,6 @@ def TCPportScan(port):
     try:
         sockTCP = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # AF_INET for internet socket, sock_stream for TCP
         sockTCP.connect((local_ip, port))
-        sockUDP = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # AF_INET for internet socket, sock_dgram for UDP
-        sockUDP.connect((local_ip, port))
         return True
     except:
         return False
@@ -44,28 +42,39 @@ def worker():
     while not queue.empty():
         port = queue.get()
         if TCPportScan(port):
-            open_tcp_ports.append(port)
+            try:
+                serviceName = socket.getservbyport(port, 'tcp')
+                open_tcp_ports.append((port, serviceName))
+            except:
+                continue
 
         if UDPportScan(port):
-            open_udp_ports.append(port)
+            try:
+                serviceName = socket.getservbyport(port, 'udp')
+                open_udp_ports.append((port, serviceName))
+            except:
+                continue
+
+def main():
+    port_list = range(1, 9999)  # specify port range to test
+    fillQueue(port_list)
+
+    thread_list = []
+
+    for t in range(500):
+        thread = threading.Thread(target=worker)
+        thread_list.append(thread)
+
+    for thread in thread_list:
+        thread.start()
+
+    for thread in thread_list:
+        thread.join()
+
+    print("Open TCP ports are: ", open_tcp_ports)
+
+    print("Open UDP ports are: ", open_udp_ports)
 
 
-port_list = range(1, 9999)  # specify port range to test
-fillQueue(port_list)
-
-thread_list = []
-
-for t in range(500):
-    thread = threading.Thread(target=worker)
-    thread_list.append(thread)
-
-for thread in thread_list:
-    thread.start()
-
-for thread in thread_list:
-    thread.join()
-
-print("Open TCP ports are: ", open_tcp_ports)
-
-print("Open UDP ports are: ", open_udp_ports)
-
+if __name__ == '__main__':
+    main()
