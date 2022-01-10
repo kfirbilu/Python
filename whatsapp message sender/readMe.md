@@ -23,11 +23,11 @@ Please notice the following things:
 2. The numbers must contain digits only!
 
     For example: The number 050-1111111 will be 501111111 in the Excel file.
-3. If you're trying to use Israeli numbers, please make sure every number starts w\out the first '0' 
+3. If you're trying to use Israeli numbers, please make sure every number starts w/out the first '0' 
  
 That's all!
 
-If you have any questions, please feel free to contact me via LinkedIn, Mail or even Facebook
+If you have any questions, please feel free to contact me via LinkedIn, Mail or even Facebook 
 
 
 Enjoy! :)
