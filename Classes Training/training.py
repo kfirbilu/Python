@@ -1,8 +1,37 @@
-class Customer:
+class User:
+    def log(self):
+        print(self)
+
+class Funk:
+    def speak(self):
+        print("working")
+
+
+class Teacher(User):
+    def log(self):
+        print("Im a teacher!")
+
+    def bark(self):
+        print("bark")
+
+
+class Customer(Teacher,Funk):
     def __init__(self, name, membership_type):
         self.name = name
         self.membership_type = membership_type
         self.age = 4
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        self._name = name
+
+    @name.deleter
+    def name(self, name):
+        del self._name
 
     def update_membership(self, new_membership):
         self.membership_type = new_membership
@@ -26,9 +55,13 @@ class Customer:
 
 
 
-customers = [Customer("Kfir", "Gold"),
-             Customer("Yadin", "Silver")]
+users = [Customer("Kfir", "Gold"),
+         Customer("Yadin", "Silver"), Teacher()]
 
-Customer.print_all_customers(customers)
+c = Customer("lior","gold")
 
-print(customers)
+c.speak()
+
+
+
+
